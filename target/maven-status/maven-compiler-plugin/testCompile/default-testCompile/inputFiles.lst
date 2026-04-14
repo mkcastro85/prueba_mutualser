@@ -1,0 +1,12 @@
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\application\usecase\GetEmployeesByGenderUseCaseTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\application\usecase\GetAllEmployeesUseCaseTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\application\usecase\CreateEmployeeUseCaseTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\infrastructure\adapter\JwtServiceAdapterTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\application\usecase\GetEmployeesByAgeUseCaseTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\application\usecase\AuthenticationUseCaseTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\infrastructure\adapter\EmployeeRepositoryAdapterTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\application\usecase\UpdateEmployeeUseCaseTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\infrastructure\adapter\PasswordEncoderAdapterTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\infrastructure\adapter\UserRepositoryAdapterTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\application\usecase\DeleteEmployeeUseCaseTest.java
+C:\Users\ronal\Documents\proyecto2\prueba_mutualser\src\test\java\com\mutualser\employee\application\usecase\GetEmployeeUseCaseTest.java

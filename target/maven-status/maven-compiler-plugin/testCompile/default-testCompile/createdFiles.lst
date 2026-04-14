@@ -1,0 +1,12 @@
+com\mutualser\employee\application\usecase\GetEmployeeUseCaseTest.class
+com\mutualser\employee\application\usecase\AuthenticationUseCaseTest.class
+com\mutualser\employee\infrastructure\adapter\EmployeeRepositoryAdapterTest.class
+com\mutualser\employee\infrastructure\adapter\PasswordEncoderAdapterTest.class
+com\mutualser\employee\infrastructure\adapter\JwtServiceAdapterTest.class
+com\mutualser\employee\application\usecase\DeleteEmployeeUseCaseTest.class
+com\mutualser\employee\application\usecase\UpdateEmployeeUseCaseTest.class
+com\mutualser\employee\infrastructure\adapter\UserRepositoryAdapterTest.class
+com\mutualser\employee\application\usecase\GetEmployeesByAgeUseCaseTest.class
+com\mutualser\employee\application\usecase\GetAllEmployeesUseCaseTest.class
+com\mutualser\employee\application\usecase\GetEmployeesByGenderUseCaseTest.class
+com\mutualser\employee\application\usecase\CreateEmployeeUseCaseTest.class
