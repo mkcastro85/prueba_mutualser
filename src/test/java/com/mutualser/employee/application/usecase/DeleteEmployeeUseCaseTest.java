@@ -31,11 +31,11 @@ class DeleteEmployeeUseCaseTest {
     void execute_WithExistingId_ShouldDeleteEmployee() {
         Employee employee = Employee.builder()
                 .id(1L)
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.findById(1L)).thenReturn(Optional.of(employee));

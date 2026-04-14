@@ -17,15 +17,4 @@ public class EmployeeResponse {
     private Employee.Gender gender;
     private Integer age;
     private String email;
-
-    public static EmployeeResponse fromDomain(Employee employee) {
-        return EmployeeResponse.builder()
-                .id(employee.getId())
-                .firstName(employee.getFirstName())
-                .lastName(employee.getLastName())
-                .gender(employee.getGender())
-                .age(employee.getAge())
-                .email(employee.getEmail())
-                .build();
-    }
 }

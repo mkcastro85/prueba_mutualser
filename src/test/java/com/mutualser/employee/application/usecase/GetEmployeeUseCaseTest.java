@@ -31,11 +31,11 @@ class GetEmployeeUseCaseTest {
     void execute_WithExistingId_ShouldReturnEmployee() {
         Employee employee = Employee.builder()
                 .id(1L)
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.findById(1L)).thenReturn(Optional.of(employee));
@@ -44,7 +44,7 @@ class GetEmployeeUseCaseTest {
 
         assertNotNull(result);
         assertEquals(1L, result.getId());
-        assertEquals("John", result.getFirstName());
+        assertEquals("Meyling", result.getFirstName());
         verify(employeeRepositoryPort).findById(1L);
     }
 

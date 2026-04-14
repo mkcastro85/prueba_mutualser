@@ -33,19 +33,19 @@ class UpdateEmployeeUseCaseTest {
     void execute_WithValidData_ShouldUpdateEmployee() {
         Employee existingEmployee = Employee.builder()
                 .id(1L)
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         Employee updatedData = Employee.builder()
-                .firstName("Jane")
-                .lastName("Smith")
+                .firstName("Meyling Karina")
+                .lastName("Castro")
                 .gender(Employee.Gender.FEMALE)
-                .age(35)
-                .email("jane.smith@example.com")
+                .age(29)
+                .email("meyling.k.castro@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.findById(1L)).thenReturn(Optional.of(existingEmployee));
@@ -54,11 +54,11 @@ class UpdateEmployeeUseCaseTest {
         Employee result = updateEmployeeUseCase.execute(1L, updatedData);
 
         assertNotNull(result);
-        assertEquals("Jane", result.getFirstName());
-        assertEquals("Smith", result.getLastName());
+        assertEquals("Meyling Karina", result.getFirstName());
+        assertEquals("Castro", result.getLastName());
         assertEquals(Employee.Gender.FEMALE, result.getGender());
-        assertEquals(35, result.getAge());
-        assertEquals("jane.smith@example.com", result.getEmail());
+        assertEquals(29, result.getAge());
+        assertEquals("meyling.k.castro@gmail.com", result.getEmail());
         verify(employeeRepositoryPort).findById(1L);
         verify(employeeRepositoryPort).save(existingEmployee);
     }
@@ -66,11 +66,11 @@ class UpdateEmployeeUseCaseTest {
     @Test
     void execute_WithNonExistingId_ShouldThrowException() {
         Employee updatedData = Employee.builder()
-                .firstName("Jane")
-                .lastName("Smith")
+                .firstName("Meyling")
+                .lastName("Castro")
                 .gender(Employee.Gender.FEMALE)
-                .age(35)
-                .email("jane.smith@example.com")
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.findById(999L)).thenReturn(Optional.empty());
@@ -86,19 +86,19 @@ class UpdateEmployeeUseCaseTest {
     void execute_WithInvalidData_ShouldThrowException() {
         Employee existingEmployee = Employee.builder()
                 .id(1L)
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         Employee invalidData = Employee.builder()
                 .firstName("")
-                .lastName("Smith")
+                .lastName("Castro")
                 .gender(Employee.Gender.FEMALE)
-                .age(35)
-                .email("jane.smith@example.com")
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.findById(1L)).thenReturn(Optional.of(existingEmployee));

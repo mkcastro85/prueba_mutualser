@@ -26,14 +26,4 @@ public class EmployeeRequest {
     @NotBlank(message = "Email is required")
     @Email(message = "Email must be valid")
     private String email;
-
-    public Employee toDomain() {
-        return Employee.builder()
-                .firstName(this.firstName)
-                .lastName(this.lastName)
-                .gender(this.gender)
-                .age(this.age)
-                .email(this.email)
-                .build();
-    }
 }

@@ -34,8 +34,12 @@ public class JwtServiceAdapter implements JwtServicePort {
 
     @Override
     public boolean validateToken(String token, String username) {
-        final String extractedUsername = extractUsername(token);
-        return (extractedUsername.equals(username) && !isTokenExpired(token));
+        try {
+            final String extractedUsername = extractUsername(token);
+            return (extractedUsername.equals(username) && !isTokenExpired(token));
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     private String createToken(Map<String, Object> claims, String subject) {

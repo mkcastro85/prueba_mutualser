@@ -30,20 +30,20 @@ class CreateEmployeeUseCaseTest {
     @Test
     void execute_WithValidEmployee_ShouldSaveEmployee() {
         Employee employee = Employee.builder()
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         Employee savedEmployee = Employee.builder()
                 .id(1L)
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.count()).thenReturn(0L);
@@ -53,7 +53,7 @@ class CreateEmployeeUseCaseTest {
 
         assertNotNull(result);
         assertEquals(1L, result.getId());
-        assertEquals("John", result.getFirstName());
+        assertEquals("Meyling", result.getFirstName());
         verify(employeeRepositoryPort).count();
         verify(employeeRepositoryPort).save(employee);
     }
@@ -61,11 +61,11 @@ class CreateEmployeeUseCaseTest {
     @Test
     void execute_WhenMaxEmployeesReached_ShouldThrowException() {
         Employee employee = Employee.builder()
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.count()).thenReturn(30L);
@@ -81,10 +81,10 @@ class CreateEmployeeUseCaseTest {
     void execute_WithNullFirstName_ShouldThrowException() {
         Employee employee = Employee.builder()
                 .firstName(null)
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         assertThrows(InvalidEmployeeDataException.class, () -> 
@@ -96,11 +96,11 @@ class CreateEmployeeUseCaseTest {
     @Test
     void execute_WithEmptyLastName_ShouldThrowException() {
         Employee employee = Employee.builder()
-                .firstName("John")
+                .firstName("Meyling")
                 .lastName("")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         assertThrows(InvalidEmployeeDataException.class, () -> 
@@ -112,11 +112,11 @@ class CreateEmployeeUseCaseTest {
     @Test
     void execute_WithNullGender_ShouldThrowException() {
         Employee employee = Employee.builder()
-                .firstName("John")
-                .lastName("Doe")
+                .firstName("Meyling")
+                .lastName("Castro")
                 .gender(null)
-                .age(30)
-                .email("john.doe@example.com")
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         assertThrows(InvalidEmployeeDataException.class, () -> 
@@ -128,11 +128,11 @@ class CreateEmployeeUseCaseTest {
     @Test
     void execute_WithInvalidAge_ShouldThrowException() {
         Employee employee = Employee.builder()
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
                 .age(0)
-                .email("john.doe@example.com")
+                .email("meyling.castro@gmail.com")
                 .build();
 
         assertThrows(InvalidEmployeeDataException.class, () -> 
@@ -144,10 +144,10 @@ class CreateEmployeeUseCaseTest {
     @Test
     void execute_WithInvalidEmail_ShouldThrowException() {
         Employee employee = Employee.builder()
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
                 .email("invalid-email")
                 .build();
 

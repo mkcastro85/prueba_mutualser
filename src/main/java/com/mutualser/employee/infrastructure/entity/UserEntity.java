@@ -23,20 +23,4 @@ public class UserEntity {
 
     @Column(nullable = false)
     private String password;
-
-    public User toDomain() {
-        return User.builder()
-                .id(this.id)
-                .username(this.username)
-                .password(this.password)
-                .build();
-    }
-
-    public static UserEntity fromDomain(User user) {
-        return UserEntity.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .build();
-    }
 }

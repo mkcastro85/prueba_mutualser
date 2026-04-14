@@ -54,13 +54,15 @@ class JwtServiceAdapterTest {
     }
 
     @Test
-    void validateToken_WithExpiredToken_ShouldReturnFalse() {
+    void validateToken_WithExpiredToken_ShouldReturnFalse() throws InterruptedException {
         JwtServiceAdapter shortExpirationAdapter = new JwtServiceAdapter();
         ReflectionTestUtils.setField(shortExpirationAdapter, "secretKey", 
             "mySecretKeyForJWTTokenGenerationThatIsLongEnough1234567890");
-        ReflectionTestUtils.setField(shortExpirationAdapter, "expiration", -1000L);
+        ReflectionTestUtils.setField(shortExpirationAdapter, "expiration", 1L);
 
         String token = shortExpirationAdapter.generateToken("admin");
+        
+        Thread.sleep(100);
 
         boolean isValid = shortExpirationAdapter.validateToken(token, "admin");
 

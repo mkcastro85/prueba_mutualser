@@ -31,20 +31,20 @@ class GetEmployeesByGenderUseCaseTest {
     void execute_ShouldReturnEmployeesWithSpecificGender() {
         Employee employee1 = Employee.builder()
                 .id(1L)
-                .firstName("Jane")
-                .lastName("Doe")
+                .firstName("Meyling")
+                .lastName("Castro")
                 .gender(Employee.Gender.FEMALE)
-                .age(30)
-                .email("jane.doe@example.com")
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         Employee employee2 = Employee.builder()
                 .id(2L)
-                .firstName("Mary")
-                .lastName("Smith")
+                .firstName("Patricia")
+                .lastName("Gómez")
                 .gender(Employee.Gender.FEMALE)
-                .age(35)
-                .email("mary.smith@example.com")
+                .age(32)
+                .email("patricia.gomez@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.findByGender(Employee.Gender.FEMALE))

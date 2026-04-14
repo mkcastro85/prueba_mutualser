@@ -31,20 +31,20 @@ class GetEmployeesByAgeUseCaseTest {
     void execute_ShouldReturnEmployeesWithAgeGreaterThanOrEqual() {
         Employee employee1 = Employee.builder()
                 .id(1L)
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
                 .age(45)
-                .email("john.doe@example.com")
+                .email("meyling.castro@gmail.com")
                 .build();
 
         Employee employee2 = Employee.builder()
                 .id(2L)
-                .firstName("Jane")
-                .lastName("Smith")
+                .firstName("Andrea")
+                .lastName("López")
                 .gender(Employee.Gender.FEMALE)
                 .age(50)
-                .email("jane.smith@example.com")
+                .email("andrea.lopez@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.findByAgeGreaterThanEqual(40)).thenReturn(Arrays.asList(employee1, employee2));

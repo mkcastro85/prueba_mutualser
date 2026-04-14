@@ -4,6 +4,7 @@ import com.mutualser.employee.application.usecase.*;
 import com.mutualser.employee.domain.model.Employee;
 import com.mutualser.employee.infrastructure.dto.EmployeeRequest;
 import com.mutualser.employee.infrastructure.dto.EmployeeResponse;
+import com.mutualser.employee.infrastructure.mapper.EmployeeMapper;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class EmployeeController {
     private final GetAllEmployeesUseCase getAllEmployeesUseCase;
     private final GetEmployeesByAgeUseCase getEmployeesByAgeUseCase;
     private final GetEmployeesByGenderUseCase getEmployeesByGenderUseCase;
+    private final EmployeeMapper employeeMapper;
 
     public EmployeeController(
             CreateEmployeeUseCase createEmployeeUseCase,
@@ -30,7 +32,8 @@ public class EmployeeController {
             DeleteEmployeeUseCase deleteEmployeeUseCase,
             GetAllEmployeesUseCase getAllEmployeesUseCase,
             GetEmployeesByAgeUseCase getEmployeesByAgeUseCase,
-            GetEmployeesByGenderUseCase getEmployeesByGenderUseCase) {
+            GetEmployeesByGenderUseCase getEmployeesByGenderUseCase,
+            EmployeeMapper employeeMapper) {
         this.createEmployeeUseCase = createEmployeeUseCase;
         this.getEmployeeUseCase = getEmployeeUseCase;
         this.updateEmployeeUseCase = updateEmployeeUseCase;
@@ -38,26 +41,27 @@ public class EmployeeController {
         this.getAllEmployeesUseCase = getAllEmployeesUseCase;
         this.getEmployeesByAgeUseCase = getEmployeesByAgeUseCase;
         this.getEmployeesByGenderUseCase = getEmployeesByGenderUseCase;
+        this.employeeMapper = employeeMapper;
     }
 
     @PostMapping
     public ResponseEntity<EmployeeResponse> createEmployee(@Valid @RequestBody EmployeeRequest request) {
-        Employee employee = createEmployeeUseCase.execute(request.toDomain());
-        return ResponseEntity.status(HttpStatus.CREATED).body(EmployeeResponse.fromDomain(employee));
+        Employee employee = createEmployeeUseCase.execute(employeeMapper.requestToDomain(request));
+        return ResponseEntity.status(HttpStatus.CREATED).body(employeeMapper.domainToResponse(employee));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeResponse> getEmployee(@PathVariable Long id) {
         Employee employee = getEmployeeUseCase.execute(id);
-        return ResponseEntity.ok(EmployeeResponse.fromDomain(employee));
+        return ResponseEntity.ok(employeeMapper.domainToResponse(employee));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<EmployeeResponse> updateEmployee(
             @PathVariable Long id,
             @Valid @RequestBody EmployeeRequest request) {
-        Employee employee = updateEmployeeUseCase.execute(id, request.toDomain());
-        return ResponseEntity.ok(EmployeeResponse.fromDomain(employee));
+        Employee employee = updateEmployeeUseCase.execute(id, employeeMapper.requestToDomain(request));
+        return ResponseEntity.ok(employeeMapper.domainToResponse(employee));
     }
 
     @DeleteMapping("/{id}")
@@ -70,7 +74,7 @@ public class EmployeeController {
     public ResponseEntity<List<EmployeeResponse>> getAllEmployees() {
         List<Employee> employees = getAllEmployeesUseCase.execute();
         List<EmployeeResponse> response = employees.stream()
-                .map(EmployeeResponse::fromDomain)
+                .map(employeeMapper::domainToResponse)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(response);
     }
@@ -80,7 +84,7 @@ public class EmployeeController {
             @RequestParam(defaultValue = "40") Integer minAge) {
         List<Employee> employees = getEmployeesByAgeUseCase.execute(minAge);
         List<EmployeeResponse> response = employees.stream()
-                .map(EmployeeResponse::fromDomain)
+                .map(employeeMapper::domainToResponse)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(response);
     }
@@ -89,7 +93,7 @@ public class EmployeeController {
     public ResponseEntity<List<EmployeeResponse>> getEmployeesByGender(@PathVariable Employee.Gender gender) {
         List<Employee> employees = getEmployeesByGenderUseCase.execute(gender);
         List<EmployeeResponse> response = employees.stream()
-                .map(EmployeeResponse::fromDomain)
+                .map(employeeMapper::domainToResponse)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(response);
     }

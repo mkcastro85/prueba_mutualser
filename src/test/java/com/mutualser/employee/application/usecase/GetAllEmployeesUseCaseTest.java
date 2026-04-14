@@ -31,20 +31,20 @@ class GetAllEmployeesUseCaseTest {
     void execute_ShouldReturnAllEmployees() {
         Employee employee1 = Employee.builder()
                 .id(1L)
-                .firstName("John")
-                .lastName("Doe")
-                .gender(Employee.Gender.MALE)
-                .age(30)
-                .email("john.doe@example.com")
+                .firstName("Meyling")
+                .lastName("Castro")
+                .gender(Employee.Gender.FEMALE)
+                .age(28)
+                .email("meyling.castro@gmail.com")
                 .build();
 
         Employee employee2 = Employee.builder()
                 .id(2L)
-                .firstName("Jane")
-                .lastName("Smith")
-                .gender(Employee.Gender.FEMALE)
-                .age(25)
-                .email("jane.smith@example.com")
+                .firstName("Carlos")
+                .lastName("Rodríguez")
+                .gender(Employee.Gender.MALE)
+                .age(35)
+                .email("carlos.rodriguez@gmail.com")
                 .build();
 
         when(employeeRepositoryPort.findAll()).thenReturn(Arrays.asList(employee1, employee2));
@@ -53,8 +53,8 @@ class GetAllEmployeesUseCaseTest {
 
         assertNotNull(result);
         assertEquals(2, result.size());
-        assertEquals("John", result.get(0).getFirstName());
-        assertEquals("Jane", result.get(1).getFirstName());
+        assertEquals("Meyling", result.get(0).getFirstName());
+        assertEquals("Carlos", result.get(1).getFirstName());
         verify(employeeRepositoryPort).findAll();
     }
 
